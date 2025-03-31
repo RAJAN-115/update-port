@@ -1,329 +1,279 @@
-# Technical Notes for Portfolio Project
+# Rajan's Portfolio - Technical Documentation
 
-## 🔍 Implementation Details
+## 📚 Table of Contents
+1. [Project Overview](#project-overview)
+2. [Technical Stack](#technical-stack)
+3. [Installation Guide](#installation-guide)
+4. [Project Structure](#project-structure)
+5. [Features & Components](#features--components)
+6. [AI Integration](#ai-integration)
+7. [Development Guide](#development-guide)
+8. [Deployment Guide](#deployment-guide)
+9. [Resources & Links](#resources--links)
 
-### AI Components
+## 🎯 Project Overview
 
-#### 1. Chat Assistant (`ai-chat-button.tsx`)
+This portfolio website is a modern, AI-powered showcase built with Next.js 14. It features:
+- Interactive AI chat assistant
+- Voice navigation
+- Responsive design
+- Dark/Light mode
+- Modern UI components
+- Performance optimization
 
-```typescript
-// Key features
-- Uses Hugging Face's Mistral-7B model
-- Context-aware responses
-- Dynamic message formatting
-- Error handling with retries
-- Responsive chat interface
+### Key Technologies Used
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Shadcn/ui
+- Hugging Face AI
+- Framer Motion
+- React Hook Form
+- Zod
 
-// Usage example
-const response = await generateAIResponse(prompt, context);
-```
+## 🛠️ Technical Stack
 
-#### 2. Voice Navigation (`voice-nav-button.tsx`)
+### Core Technologies
+- **Next.js 14**: Latest version with App Router
+- **React 19**: Latest version with new features
+- **TypeScript**: For type safety
+- **Tailwind CSS**: For styling
+- **Shadcn/ui**: For UI components
 
-```typescript
-// Supported commands
-- "Go to home"
-- "Navigate to about"
-- "Show projects"
-- "Open contact"
-- "Switch theme"
-
-// Browser compatibility
-- Chrome (Recommended)
-- Edge
-- Firefox (Limited support)
-- Safari (iOS 13+ required)
-```
-
-### 🛠️ Development Commands
-
-```bash
-# Start development server
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Start production server
-pnpm start
-
-# Run linter
-pnpm lint
-
-# Format code
-pnpm format
-
-# Type check
-pnpm type-check
-```
-
-### 📱 Mobile Testing Commands
-
-```bash
-# Start server with host access
-pnpm dev --host
-
-# Build and test production
-pnpm build && pnpm start
-```
-
-## 🔧 Configuration Details
-
-### Environment Variables
-
-```env
-# Required
-NEXT_PUBLIC_HUGGINGFACE_API_KEY=your_api_key_here
-
-# Optional (for development)
-NEXT_PUBLIC_API_URL=http://localhost:3000
-NODE_ENV=development
-```
-
-### API Rate Limits
-
-- Hugging Face Free Tier: 30,000 requests per month
-- Maximum response time: 30 seconds
-- Concurrent requests: 5 per second
-
-## 🎨 Styling Guidelines
-
-### Tailwind Classes Organization
-
-```tsx
-// Component structure
-<div
-  // Layout classes
-  className="fixed bottom-4 right-4
-  // Spacing
-  p-3 gap-2
-  // Visual styles
-  bg-gradient-to-r from-purple-600 to-indigo-600
-  // Interactive states
-  hover:scale-105 active:scale-95
-  // Transitions
-  transition-all duration-300"
->
-```
-
-### Z-index Hierarchy
-
-```css
-/* Stacking order */
-.floating-actions {
-  z-index: 50;
-}
-.chat-window {
-  z-index: 70;
-}
-.feedback-alert {
-  z-index: 80;
-}
-```
-
-## 🔒 Security Best Practices
-
-1. **API Key Protection**
-
-   - Never commit `.env.local`
-   - Use environment variables
-   - Implement rate limiting
-
-2. **Client-Side Security**
-
-   - Sanitize user inputs
-   - Validate API responses
-   - Handle errors gracefully
-
-3. **Browser Features**
-   - Request permissions properly
-   - Check feature compatibility
-   - Provide fallback options
-
-## 🚀 Performance Optimization
-
-### Image Optimization
-
-```typescript
-// Use Next.js Image component
-import Image from 'next/image'
-
-// Implement blur placeholder
-<Image
-  src="/profile.jpg"
-  alt="Profile"
-  width={300}
-  height={300}
-  placeholder="blur"
-  blurDataURL="data:image..."
-/>
-```
-
-### Code Splitting
-
-```typescript
-// Lazy load components
-const AIChatButton = dynamic(() => import('./ai-chat-button'), {
-  loading: () => <LoadingSpinner />,
-  ssr: false
-})
-```
-
-## 📝 Code Style Guide
-
-### TypeScript Best Practices
-
-```typescript
-// Use proper types
-interface Message {
-  text: string;
-  isBot: boolean;
-  timestamp: Date;
-}
-
-// Avoid any
-function processMessage(message: Message): void {
-  // Implementation
-}
-```
-
-### Component Structure
-
-```typescript
-// Consistent component organization
-import { useState, useEffect, useRef } from 'react';
-import type { FC } from 'react';
-
-interface Props {
-  // Props definition
-}
-
-export const Component: FC<Props> = ({ prop }) => {
-  // State management
-  // Effects
-  // Helper functions
-  // Render
-};
-```
-
-## 🐛 Debugging Tips
-
-### Common Issues
-
-1. **Chat Not Working**
-
-```bash
-# Check API key
-echo $NEXT_PUBLIC_HUGGINGFACE_API_KEY
-
-# Verify API response
-curl -X POST "https://api-inference.huggingface.co/models/..."
-```
-
-2. **Voice Recognition Issues**
-
-```javascript
-// Check browser support
-if (!('webkitSpeechRecognition' in window)) {
-  console.error('Speech recognition not supported');
-}
-```
+### AI Integration
+- **Hugging Face API**: For AI chat and processing
+- **Mistral-7B Model**: For natural language processing
+- **Web Speech API**: For voice navigation
 
 ### Development Tools
+- **pnpm**: Package manager
+- **ESLint**: Code linting
+- **Prettier**: Code formatting
+- **Jest**: Testing
+- **Husky**: Git hooks
 
-- Chrome DevTools
-- React Developer Tools
-- Network Inspector
-- Performance Monitor
+## 📥 Installation Guide
 
-## 📦 Dependencies Management
+### Prerequisites
+1. Node.js 18.17 or later
+2. pnpm (recommended) or npm
+3. Git
+4. Hugging Face API key
 
-### Key Dependencies
+### Step-by-Step Installation
 
-```json
-{
-  "dependencies": {
-    "next": "14.x",
-    "react": "18.x",
-    "tailwindcss": "3.x",
-    "@radix-ui/react": "latest"
-  }
-}
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/your-username/portfolio.git
+   cd portfolio
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your API key
+   ```
+
+4. **Development Server**
+   ```bash
+   pnpm dev
+   ```
+
+## 📁 Project Structure
+
+### Directory Layout
+```
+├── app/                    # Next.js app directory
+│   ├── about/             # About page
+│   ├── blog/              # Blog section
+│   ├── contact/           # Contact page
+│   ├── education/         # Education timeline
+│   ├── experience/        # Work experience
+│   ├── projects/          # Projects showcase
+│   ├── skills/           # Skills section
+│   ├── globals.css       # Global styles
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Home page
+├── components/           # React components
+│   ├── ai/              # AI-related components
+│   ├── ui/              # UI components
+│   └── layouts/         # Layout components
+├── lib/                 # Utility functions
+├── public/             # Static assets
+├── styles/            # Additional styles
+└── hooks/             # Custom React hooks
 ```
 
-### Update Commands
+## ✨ Features & Components
 
+### AI Features
+1. **Chat Assistant**
+   - Context-aware responses
+   - Error handling
+   - Rate limiting
+   - Retry logic
+
+2. **Voice Navigation**
+   - Command recognition
+   - Visual feedback
+   - Browser compatibility
+
+### UI Components
+1. **Layout Components**
+   - Responsive navbar
+   - Footer
+   - Theme switcher
+
+2. **Interactive Elements**
+   - Project cards
+   - Skill categories
+   - Timeline
+   - Typewriter effects
+
+## 🤖 AI Integration
+
+### Hugging Face Setup
+1. Create account at [Hugging Face](https://huggingface.co)
+2. Generate API key
+3. Configure environment variables
+
+### Voice Navigation
+- Uses Web Speech API
+- Supported browsers:
+  - Chrome (recommended)
+  - Edge
+  - Firefox (limited)
+  - Safari (iOS 13+)
+
+## 💻 Development Guide
+
+### Available Scripts
 ```bash
-# Check outdated packages
-pnpm outdated
+# Development
+pnpm dev
 
-# Update all packages
-pnpm update
+# Production
+pnpm build
+pnpm start
 
-# Update specific package
-pnpm update package-name
+# Code Quality
+pnpm lint
+pnpm format
+pnpm type-check
+
+# Testing
+pnpm test
 ```
 
-## 🌐 Browser Support
+### Best Practices
+1. **Code Style**
+   - Follow TypeScript best practices
+   - Use proper component structure
+   - Implement error handling
 
-### Minimum Versions
+2. **Performance**
+   - Optimize images
+   - Implement code splitting
+   - Use proper caching
 
-- Chrome 91+
-- Firefox 90+
-- Safari 14+
-- Edge 91+
+3. **Security**
+   - Protect API keys
+   - Implement rate limiting
+   - Validate user inputs
 
-### Feature Detection
+## 🚀 Deployment Guide
 
-```javascript
-// Check for required features
-const features = {
-  speechRecognition: 'webkitSpeechRecognition' in window,
-  webAnimations: 'animate' in document.createElement('div'),
-  intersectionObserver: 'IntersectionObserver' in window,
-};
-```
+### GitHub Setup
+1. Create new repository
+2. Initialize git
+3. Push code
+4. Set up GitHub Actions
 
-## 🔄 Git Workflow
+### Vercel Deployment
+1. Connect GitHub repository
+2. Configure environment variables
+3. Deploy
 
-### Branch Naming
+## 📚 Resources & Links
 
-```bash
-feature/feature-name
-bugfix/issue-description
-hotfix/urgent-fix
-```
+### Documentation
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Shadcn/ui Documentation](https://ui.shadcn.com)
 
-### Commit Messages
+### AI Resources
+- [Hugging Face API](https://huggingface.co/docs/api-inference)
+- [Mistral-7B Model](https://huggingface.co/mistralai/Mistral-7B-v0.1)
+- [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
 
-```bash
-# Format
-type(scope): description
+### Development Tools
+- [pnpm Documentation](https://pnpm.io)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [ESLint Documentation](https://eslint.org)
+- [Jest Documentation](https://jestjs.io)
 
-# Examples
-feat(chat): add message history
-fix(voice): resolve recognition issues
-style(ui): update button animations
-```
+### Design Resources
+- [Tailwind UI](https://tailwindui.com)
+- [Framer Motion](https://www.framer.com/motion)
+- [Radix UI](https://www.radix-ui.com)
+
+## 📝 Additional Notes
+
+### Performance Optimization
+- Image optimization
+- Code splitting
+- Lazy loading
+- Caching strategies
+
+### SEO Best Practices
+- Meta tags
+- Open Graph
+- Sitemap
+- Robots.txt
+
+### Accessibility
+- ARIA labels
+- Keyboard navigation
+- Screen reader support
+- Color contrast
+
+### Browser Support
+- Modern browsers
+- Progressive enhancement
+- Fallback options
+
+## 🔧 Troubleshooting
+
+### Common Issues
+1. **API Key Problems**
+   - Check key validity
+   - Verify environment setup
+   - Monitor rate limits
+
+2. **Voice Navigation**
+   - Check permissions
+   - Browser compatibility
+   - HTTPS requirements
+
+3. **Build Issues**
+   - Clear cache
+   - Update dependencies
+   - Check TypeScript errors
+
+## 📞 Support
+
+For support:
+1. Check documentation
+2. Review common issues
+3. Open GitHub issue
+4. Contact maintainer
 
 ---
 
-## 📚 Additional Resources
-
-### Documentation
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Hugging Face API](https://huggingface.co/docs/api-inference/index)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-
-### Tools
-
-- [Vercel](https://vercel.com) - Deployment
-- [pnpm](https://pnpm.io) - Package manager
-- [TypeScript](https://www.typescriptlang.org) - Type checking
-
-### Community
-
-- GitHub Discussions
-- Discord Server
-- Stack Overflow Tags
+Last Updated: March 2024

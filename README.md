@@ -9,6 +9,8 @@ A modern portfolio website built with Next.js 14, featuring AI-powered chat assi
 - **AI Chat Assistant**: Interactive chatbot that answers questions about skills, experience, and projects
 - **Voice Navigation**: Hands-free navigation using voice commands
 - **Natural Language Processing**: Powered by Hugging Face's Mistral-7B model
+- **Context-Aware Responses**: AI understands portfolio context and provides relevant answers
+- **Real-time Voice Feedback**: Visual indicators for voice command recognition
 
 ### Modern UI/UX
 
@@ -16,6 +18,8 @@ A modern portfolio website built with Next.js 14, featuring AI-powered chat assi
 - **Dark/Light Mode**: Automatic theme detection with manual toggle option
 - **Smooth Animations**: Enhanced user experience with subtle transitions
 - **Floating Action Buttons**: Easy access to AI features
+- **Typewriter Effects**: Dynamic text animations
+- **Interactive Components**: Hover effects and micro-interactions
 
 ### Technical Features
 
@@ -23,6 +27,38 @@ A modern portfolio website built with Next.js 14, featuring AI-powered chat assi
 - **TypeScript**: Type-safe code for better development experience
 - **Tailwind CSS**: Modern utility-first CSS framework
 - **Shadcn/ui**: High-quality UI components
+- **Framer Motion**: Smooth animations and transitions
+- **React Hook Form**: Form handling and validation
+- **Zod**: Schema validation
+- **Jest**: Unit testing setup
+
+## 📁 Project Structure
+
+```
+├── app/                    # Next.js app directory
+│   ├── about/             # About page
+│   ├── blog/              # Blog section
+│   ├── contact/           # Contact page
+│   ├── education/         # Education timeline
+│   ├── experience/        # Work experience
+│   ├── projects/          # Projects showcase
+│   ├── skills/           # Skills section
+│   ├── globals.css       # Global styles
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Home page
+├── components/           # React components
+│   ├── ai/              # AI-related components
+│   │   ├── ai-chat-button.tsx
+│   │   ├── floating-actions.tsx
+│   │   └── voice-nav-button.tsx
+│   ├── ui/              # UI components
+│   ├── layouts/         # Layout components
+│   └── [other components]
+├── lib/                 # Utility functions
+├── public/             # Static assets
+├── styles/            # Additional styles
+└── hooks/             # Custom React hooks
+```
 
 ## 📋 Prerequisites
 
@@ -31,6 +67,7 @@ Before you begin, ensure you have:
 - Node.js 18.17 or later
 - pnpm (recommended) or npm
 - A Hugging Face API key
+- Git (for version control)
 
 ## 🚀 Getting Started
 
@@ -114,87 +151,70 @@ Before you begin, ensure you have:
 
 2. Follow the installation steps above
 
-## 📱 Mobile Development
-
-To test on mobile devices:
-
-1. Ensure your computer and mobile device are on the same network
-2. Find your computer's local IP address:
-
-   ```bash
-   # Windows
-   ipconfig
-
-   # macOS/Linux
-   ifconfig
-   ```
-
-3. Run the development server with the host flag:
-   ```bash
-   pnpm dev --host
-   ```
-4. On your mobile device, visit `http://your-local-ip:3000`
-
 ## 🔧 Configuration
-
-### AI Features
-
-The project uses two main AI components:
-
-1. **AI Chat Button** (`components/ai/ai-chat-button.tsx`)
-
-   - Provides interactive chat functionality
-   - Answers questions about skills, experience, and projects
-   - Uses Hugging Face's Mistral-7B model for responses
-
-2. **Voice Navigation** (`components/ai/voice-nav-button.tsx`)
-   - Enables voice command navigation
-   - Supports common navigation commands
-   - Provides visual feedback for voice input
 
 ### Environment Variables
 
 Required environment variables:
 
-- `NEXT_PUBLIC_HUGGINGFACE_API_KEY`: Your Hugging Face API key
+```env
+# Required
+NEXT_PUBLIC_HUGGINGFACE_API_KEY=your_api_key_here
 
-## 🛠️ Development Notes
-
-### Project Structure
-
-```
-├── app/                  # Next.js app directory
-├── components/
-│   ├── ai/              # AI-related components
-│   ├── ui/              # UI components
-│   └── layouts/         # Layout components
-├── lib/                 # Utility functions
-├── public/              # Static assets
-└── styles/              # Global styles
+# Optional (for development)
+NEXT_PUBLIC_API_URL=http://localhost:3000
+NODE_ENV=development
 ```
 
-### Key Components
+### AI Features Configuration
 
-- `FloatingActions`: Container for AI buttons
-- `AIChatButton`: Main chat interface
-- `VoiceNavButton`: Voice navigation interface
+The project uses two main AI components:
 
-### Styling
+1. **AI Chat Button** (`components/ai/ai-chat-button.tsx`)
+   - Provides interactive chat functionality
+   - Answers questions about skills, experience, and projects
+   - Uses Hugging Face's Mistral-7B model for responses
+   - Includes error handling and retry logic
 
-- Uses Tailwind CSS for styling
-- Custom animations and transitions
-- Responsive design breakpoints
+2. **Voice Navigation** (`components/ai/voice-nav-button.tsx`)
+   - Enables voice command navigation
+   - Supports common navigation commands
+   - Provides visual feedback for voice input
+   - Includes browser compatibility checks
+
+## 🛠️ Development Commands
+
+```bash
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
+
+# Run linter
+pnpm lint
+
+# Format code
+pnpm format
+
+# Type check
+pnpm type-check
+
+# Run tests
+pnpm test
+```
 
 ## 🚨 Common Issues and Solutions
 
 1. **API Key Issues**
-
    - Ensure your Hugging Face API key is valid
    - Check if the key is properly set in `.env.local`
    - Verify API usage limits
 
 2. **Voice Navigation Not Working**
-
    - Check browser permissions for microphone
    - Ensure using a supported browser (Chrome recommended)
    - Check if running on HTTPS or localhost
