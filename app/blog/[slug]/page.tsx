@@ -43,7 +43,7 @@ const blogPosts = [
     readTime: "8 min read",
     author: "Rajan Prajapati",
     tags: ["MERN Stack", "Web Development", "JavaScript"],
-    image: "/blog/mern-stack.jpg",
+    image: "/placeholder.jpg",
     excerpt: "A personal journey through learning and mastering the MERN stack, from JavaScript fundamentals to full-stack development.",
   },
   {
@@ -354,14 +354,14 @@ const blogPosts = [
   },
 ]
 
-type Props = {
+type PageProps = {
   params: {
     slug: string;
   };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function BlogPostPage({ params, searchParams }: Props) {
+export default async function BlogPostPage({ params, searchParams }: PageProps) {
   const post = blogPosts.find((post) => post.id.toString() === params.slug);
 
   if (!post) {
