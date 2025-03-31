@@ -1,12 +1,10 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Typography } from "@/components/ui/typography"
 import { Button } from "@/components/ui/button"
 import { Chip } from "@/components/ui/chip"
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 
 // Sample blog posts data
@@ -366,9 +364,10 @@ interface BlogPostPageProps {
   params: {
     slug: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default function BlogPostPage({ params, searchParams }: BlogPostPageProps) {
   const post = blogPosts.find((post) => post.id.toString() === params.slug);
 
   if (!post) {
