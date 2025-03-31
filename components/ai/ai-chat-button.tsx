@@ -126,6 +126,7 @@ export function AIChatButton() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -134,6 +135,12 @@ export function AIChatButton() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [messages.length]);
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
@@ -207,7 +214,7 @@ export function AIChatButton() {
               </Button>
             </div>
 
-            <div className="h-[400px] overflow-y-auto p-4">
+            <div className="h-[400px] overflow-y-auto p-4" ref={containerRef}>
               {messages.map((message, index) => (
                 <div
                   key={index}

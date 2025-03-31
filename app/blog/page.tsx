@@ -34,7 +34,7 @@ export default function BlogPage() {
                     Coming Soon!
                   </Typography>
                   <Typography variant="p" className="text-muted-foreground">
-                    I'm currently working on creating valuable content about technology,
+                    I&apos;m currently working on creating valuable content about technology,
                     programming, and development. Stay tuned for insightful articles and tutorials!
                   </Typography>
                 </div>

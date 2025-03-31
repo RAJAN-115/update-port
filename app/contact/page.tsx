@@ -31,7 +31,7 @@ export default function ContactPage() {
       const suggestions = [
         'Consider mentioning your project timeline if this is a job inquiry.',
         'You might want to include your availability for a follow-up call.',
-        "If you're interested in a specific project, mention which one caught your eye!",
+        "If you&apos;re interested in a specific project, mention which one caught your eye!",
         'Feel free to ask any specific questions about my skills or experience.',
         'If you found me through a recommendation, mentioning that would be great!',
       ];
@@ -136,7 +136,7 @@ export default function ContactPage() {
                     {submitted && (
                       <Alert className="bg-green-600/10 border-green-600/20">
                         <AlertDescription className="text-sm text-green-600">
-                          Thanks for your message! I'll get back to you soon.
+                          Thanks for your message! I&apos;ll get back to you soon.
                         </AlertDescription>
                       </Alert>
                     )}

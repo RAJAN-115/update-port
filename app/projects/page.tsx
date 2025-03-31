@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Typography } from '@/components/ui/typography';
 import { motion } from 'framer-motion';
 import { Code2, ExternalLink, Github, Globe, Lightbulb, Rocket } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 
 // Sample project data
@@ -218,9 +219,11 @@ export default function ProjectsPage() {
                             className="group relative overflow-hidden rounded-lg border bg-card"
                           >
                             <div className="aspect-video relative overflow-hidden">
-                              <img
+                              <Image
                                 src={project.image}
                                 alt={project.title}
+                                width={800}
+                                height={400}
                                 className="object-cover w-full h-full transition-transform group-hover:scale-105"
                               />
                             </div>
@@ -293,9 +296,11 @@ export default function ProjectsPage() {
                             className="group relative overflow-hidden rounded-lg border bg-card"
                           >
                             <div className="aspect-video relative overflow-hidden">
-                              <img
+                              <Image
                                 src={project.image}
                                 alt={project.title}
+                                width={800}
+                                height={400}
                                 className="object-cover w-full h-full transition-transform group-hover:scale-105"
                               />
                             </div>
@@ -368,9 +373,11 @@ export default function ProjectsPage() {
                             className="group relative overflow-hidden rounded-lg border bg-card"
                           >
                             <div className="aspect-video relative overflow-hidden">
-                              <img
+                              <Image
                                 src={project.image}
                                 alt={project.title}
+                                width={800}
+                                height={400}
                                 className="object-cover w-full h-full transition-transform group-hover:scale-105"
                               />
                             </div>
