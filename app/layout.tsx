@@ -32,11 +32,11 @@ export const metadata: Metadata = {
   generator: 'v0.dev',
   authors: [{ name: 'Rajan Prajapati' }],
   keywords: ['portfolio', 'developer', 'web development', 'AI'],
-  metadataBase: new URL('https://your-domain.com'),
+  metadataBase: new URL('https://rajansportfolio.vercel.app'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://your-domain.com',
+    url: 'https://rajansportfolio.vercel.app',
     siteName: "Rajan's Portfolio",
     title: "Rajan's Portfolio",
     description: 'AI-Powered Personal Portfolio of Rajan Prajapati',
@@ -80,4 +80,3 @@ export default function RootLayout({
   );
 }
 
-import './globals.css';
