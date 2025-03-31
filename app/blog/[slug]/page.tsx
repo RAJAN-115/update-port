@@ -48,10 +48,11 @@ const blogPosts = [
       <p>If you're just starting with MERN stack development, my advice is to focus on one technology at a time. Build small projects that integrate what you've learned before moving on to the next component of the stack.</p>
     `,
     date: "March 15, 2023",
-    readTime: "5 min read",
-    image: "/placeholder.svg?height=400&width=800",
-    tags: ["MERN", "Web Development", "JavaScript"],
-    slug: "journey-with-mern-stack",
+    readTime: "8 min read",
+    author: "Rajan Prajapati",
+    tags: ["MERN Stack", "Web Development", "JavaScript"],
+    image: "/blog/mern-stack.jpg",
+    excerpt: "A personal journey through learning and mastering the MERN stack, from JavaScript fundamentals to full-stack development.",
   },
   {
     id: 2,
@@ -361,73 +362,77 @@ const blogPosts = [
   },
 ]
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((post) => post.slug === params.slug)
+interface BlogPostPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = blogPosts.find((post) => post.id.toString() === params.slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
-    <main className="container mx-auto py-12 px-4">
-      <div className="max-w-3xl mx-auto">
-        <Button variant="ghost" className="mb-6 gap-2" asChild>
-          <Link href="/blog">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Blog
-          </Link>
-        </Button>
+    <div className="container mx-auto px-4 py-8">
+      <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8">
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back to Blog
+      </Link>
 
-        <div className="mb-8">
-          <Typography variant="h1" className="mb-4">
-            {post.title}
-          </Typography>
-
-          <div className="flex flex-wrap gap-4 mb-6">
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <Calendar className="h-4 w-4" />
-              <span>{post.date}</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <Clock className="h-4 w-4" />
-              <span>{post.readTime}</span>
-            </div>
+      <article className="prose prose-lg max-w-none">
+        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+        
+        <div className="flex items-center text-gray-600 mb-8">
+          <div className="flex items-center mr-4">
+            <Calendar className="w-4 h-4 mr-2" />
+            {post.date}
           </div>
-
-          <div className="flex flex-wrap gap-2 mb-6">
-            {post.tags.map((tag) => (
-              <Chip key={tag} variant="secondary">
-                {tag}
-              </Chip>
-            ))}
-          </div>
-
-          <div className="relative h-64 sm:h-80 md:h-96 w-full mb-8 rounded-lg overflow-hidden">
-            <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+          <div className="flex items-center">
+            <Clock className="w-4 h-4 mr-2" />
+            {post.readTime}
           </div>
         </div>
 
-        <Card>
-          <CardContent className="p-6 sm:p-8 prose prose-invert max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          </CardContent>
-        </Card>
+        <div className="mb-8">
+          <Image
+            src={post.image}
+            alt={post.title}
+            width={1200}
+            height={600}
+            className="rounded-lg"
+          />
+        </div>
 
-        <div className="mt-8 flex justify-between">
-          <Button variant="ghost" className="gap-2" asChild>
+        <div className="flex flex-wrap gap-2 mb-8">
+          {post.tags.map((tag) => (
+            <Chip key={tag} variant="outline">
+              {tag}
+            </Chip>
+          ))}
+        </div>
+
+        <div
+          className="prose prose-lg max-w-none"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+
+        <div className="mt-8 flex justify-between items-center">
+          <Button variant="outline" asChild>
             <Link href="/blog">
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
             </Link>
           </Button>
-
-          <Button variant="outline" className="gap-2">
-            <Share2 className="h-4 w-4" />
-            Share Article
+          <Button variant="outline">
+            <Share2 className="w-4 h-4 mr-2" />
+            Share
           </Button>
         </div>
-      </div>
-    </main>
-  )
+      </article>
+    </div>
+  );
 }
 
