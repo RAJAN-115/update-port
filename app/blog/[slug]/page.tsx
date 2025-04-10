@@ -1,8 +1,21 @@
 import { notFound } from "next/navigation";
 import BlogPostContent from "./BlogPostContent";
 
+interface BlogPost {
+  id: number;
+  title: string;
+  content: string;
+  date: string;
+  readTime: string;
+  author?: string;
+  tags: string[];
+  image: string;
+  excerpt?: string;
+  slug?: string;
+}
+
 // Sample blog posts data
-const blogPosts = [
+const blogPosts: BlogPost[] = [
   {
     id: 1,
     title: "My Journey with MERN Stack Development",
@@ -354,12 +367,12 @@ const blogPosts = [
   },
 ]
 
-interface PageProps {
+type Props = {
   params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-export default function BlogPostPage({ params }: PageProps) {
+export default function BlogPostPage({ params }: Props) {
   const post = blogPosts.find((post) => post.id.toString() === params.slug);
 
   if (!post) {

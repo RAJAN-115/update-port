@@ -233,15 +233,17 @@ export default function ProjectsPage() {
                                   {project.title}
                                 </Typography>
                                 <div className="flex gap-2">
-                                  <Button variant="ghost" size="icon" asChild>
+                                  {project.demo && (
                                     <a
                                       href={project.demo}
                                       target="_blank"
                                       rel="noopener noreferrer"
+                                      className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary"
                                     >
                                       <ExternalLink className="h-4 w-4" />
+                                      <span>Live Demo</span>
                                     </a>
-                                  </Button>
+                                  )}
                                   {project.github && (
                                     <Button variant="ghost" size="icon" asChild>
                                       <a
@@ -310,15 +312,17 @@ export default function ProjectsPage() {
                                   {project.title}
                                 </Typography>
                                 <div className="flex gap-2">
-                                  <Button variant="ghost" size="icon" asChild>
+                                  {project.demo && (
                                     <a
                                       href={project.demo}
                                       target="_blank"
                                       rel="noopener noreferrer"
+                                      className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary"
                                     >
                                       <ExternalLink className="h-4 w-4" />
+                                      <span>Live Demo</span>
                                     </a>
-                                  </Button>
+                                  )}
                                   {project.github && (
                                     <Button variant="ghost" size="icon" asChild>
                                       <a
@@ -388,15 +392,15 @@ export default function ProjectsPage() {
                                 </Typography>
                                 <div className="flex gap-2">
                                   {project.demo && (
-                                    <Button variant="ghost" size="icon" asChild>
-                                      <a
-                                        href={project.demo}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                      >
-                                        <ExternalLink className="h-4 w-4" />
-                                      </a>
-                                    </Button>
+                                    <a
+                                      href={project.demo}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary"
+                                    >
+                                      <ExternalLink className="h-4 w-4" />
+                                      <span>Live Demo</span>
+                                    </a>
                                   )}
                                   {project.github && (
                                     <Button variant="ghost" size="icon" asChild>

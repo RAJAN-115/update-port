@@ -114,13 +114,11 @@ ${context}`,
       return 'I received an invalid response. Please try again.';
     }
 
-    let text = result.choices[0].message.content.trim();
-
-    // Format the response for better readability
+    const text = result.choices[0].message.content;
     return text
       .split('\n')
-      .map((line) => line.trim())
-      .filter((line) => line)
+      .map((line: string) => line.trim())
+      .filter((line: string) => line)
       .join('\n');
   } catch (error) {
     console.error('Error generating AI response:', error);

@@ -3,6 +3,7 @@ import { FloatingActions } from '@/components/ai/floating-actions';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { ThemeProvider } from '@/components/theme-provider';
+import { cn } from '@/lib/utils';
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import type React from 'react';
@@ -24,11 +25,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: {
-    default: "Rajan's Portfolio",
-    template: "%s | Rajan's Portfolio",
-  },
-  description: 'AI-Powered Personal Portfolio of Rajan Prajapati',
+  title: 'Rajan Portfolio',
+  description: 'AI-Powered Portfolio Website',
   generator: 'v0.dev',
   authors: [{ name: 'Rajan Prajapati' }],
   keywords: ['portfolio', 'developer', 'web development', 'AI'],
@@ -61,15 +59,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body
-        className={`${inter.className} flex min-h-screen flex-col bg-background antialiased`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={cn(inter.className, 'min-h-screen bg-background antialiased')}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

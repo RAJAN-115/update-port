@@ -4,11 +4,24 @@ const nextConfig = {
     ignoreDuringBuilds: false,
   },
   typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
     ignoreBuildErrors: false,
   },
   images: {
-    unoptimized: true,
-    domains: ['images.unsplash.com'], // Add any image domains you're using
+    unoptimized: false,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.githubusercontent.com',
+      },
+    ],
   },
   experimental: {
     webpackBuildWorker: true,

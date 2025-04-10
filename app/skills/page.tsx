@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Typography } from '@/components/ui/typography';
 import { motion } from 'framer-motion';
 import { Brain, Code2, ExternalLink, GitBranch, Lightbulb, Terminal, Wrench } from 'lucide-react';
+import Image from 'next/image';
 
 interface Skill {
   name: string;
@@ -57,49 +58,49 @@ const aiTools: AITool[] = [
   {
     name: 'ChatGPT',
     description: 'Advanced language model for conversation and content generation',
-    icon: <img src="/icons/chatgpt.svg" alt="ChatGPT" className="h-6 w-6" />,
+    icon: <Image src="/icons/chatgpt.svg" alt="ChatGPT" width={24} height={24} className="h-6 w-6" />,
     url: 'https://chat.openai.com',
   },
   {
     name: 'Claude',
     description: 'Advanced AI assistant for research and analysis',
-    icon: <img src="/icons/claude.svg" alt="Claude" className="h-6 w-6" />,
+    icon: <Image src="/icons/claude.svg" alt="Claude" width={24} height={24} className="h-6 w-6" />,
     url: 'https://www.anthropic.com/claude',
   },
   {
     name: 'DeepSeek',
     description: 'AI model specializing in deep learning and research',
-    icon: <img src="/icons/deepseek.svg" alt="DeepSeek" className="h-6 w-6" />,
+    icon: <Image src="/icons/deepseek.svg" alt="DeepSeek" width={24} height={24} className="h-6 w-6" />,
     url: 'https://deepseek.ai',
   },
   {
     name: 'Qwen',
     description: 'Advanced language model by Alibaba Cloud',
-    icon: <img src="/icons/qwen.svg" alt="Qwen" className="h-6 w-6" />,
+    icon: <Image src="/icons/qwen.svg" alt="Qwen" width={24} height={24} className="h-6 w-6" />,
     url: 'https://qwenlm.github.io',
   },
   {
     name: 'Perplexity',
     description: 'AI-powered search and research assistant',
-    icon: <img src="/icons/perplexity.svg" alt="Perplexity" className="h-6 w-6" />,
+    icon: <Image src="/icons/perplexity.svg" alt="Perplexity" width={24} height={24} className="h-6 w-6" />,
     url: 'https://www.perplexity.ai',
   },
   {
     name: 'Google AI Studio',
     description: "Google's AI development and experimentation platform",
-    icon: <img src="/icons/google-ai-studio.svg" alt="Google AI Studio" className="h-6 w-6" />,
+    icon: <Image src="/icons/google-ai-studio.svg" alt="Google AI Studio" width={24} height={24} className="h-6 w-6" />,
     url: 'https://makersuite.google.com',
   },
   {
     name: 'Grok',
     description: "xAI's advanced language model",
-    icon: <img src="/icons/grok.svg" alt="Grok" className="h-6 w-6" />,
+    icon: <Image src="/icons/grok.svg" alt="Grok" width={24} height={24} className="h-6 w-6" />,
     url: 'https://grok.x.ai',
   },
   {
     name: 'Manus AI',
     description: 'AI-powered development and coding assistant',
-    icon: <img src="/icons/manus.svg" alt="Manus AI" className="h-6 w-6" />,
+    icon: <Image src="/icons/manus.svg" alt="Manus AI" width={24} height={24} className="h-6 w-6" />,
     url: 'https://manus.ai',
   },
 ];
